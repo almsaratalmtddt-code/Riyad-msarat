@@ -1,3 +1,0 @@
-import {NextResponse} from "next/server"; import {prisma} from "../../../lib/prisma";
-export async function GET(){return NextResponse.json(await prisma.customer.findMany({orderBy:{createdAt:"desc"}}))}
-export async function POST(req){const b=await req.json(); if(!b.name)return NextResponse.json({error:"اسم العميل مطلوب"},{status:400}); return NextResponse.json(await prisma.customer.create({data:{name:b.name,phone:b.phone||null,email:b.email||null,openingBalance:b.openingBalance||0}}),{status:201})}
